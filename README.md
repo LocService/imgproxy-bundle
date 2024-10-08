@@ -55,17 +55,20 @@ imgproxy:
         # this is a preset example with all the configuration available
         png_thumbnail:
             format: png
-            resize:
-                resizing_type: fit
-                width: 150
-                height: 75
-                enlarge: true
-                extend:
-                    extend: true
-                    gravity:
-                        type: no
-                        x_offset: 10
-                        y_offset: 10
+            options:
+                resize:
+                    resizing_type: fit
+                    width: 150
+                    height: 75
+                    enlarge: true
+                    extend:
+                        extend: true
+                        gravity:
+                            type: no
+                            x_offset: 10
+                            y_offset: 10
+                rotate:
+                    angle: 90
 ```
 
 Then, you can use your preset in your templates:
