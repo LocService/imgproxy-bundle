@@ -52,7 +52,7 @@ imgproxy:
         encode: true
 
     presets:
-        # this is a preset example with all the configuration available
+        # this is a preset example
         png_thumbnail:
             format: png
             options:

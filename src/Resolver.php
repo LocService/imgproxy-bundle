@@ -48,7 +48,11 @@ class Resolver
             }
         }
 
-        $preset = $this->presets[$presetName];
+        $preset = $this->presets[$presetName] ?? null;
+        if (null === $preset) {
+            throw new UndefinedPresetException(message: sprintf('Undefined preset %s', $presetName));
+        }
+
         foreach ($preset['options'] as $optionName => $optionParams) {
             $option = OptionFactory::fromName($optionName, $optionParams);
             $options[] = $option->resolve();
