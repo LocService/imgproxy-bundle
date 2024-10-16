@@ -14,8 +14,6 @@ declare(strict_types=1);
 namespace Mezcalito\ImgproxyBundle;
 
 use Mezcalito\ImgproxyBundle\Option\OptionFactory;
-use Mezcalito\ImgproxyBundle\Option\OptionInterface;
-use Mezcalito\ImgproxyBundle\Option\Resize;
 use Mezcalito\ImgproxyBundle\Url\Encoder;
 use Mezcalito\ImgproxyBundle\Url\Signer;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -50,14 +48,15 @@ class Resolver
 
         $preset = $this->presets[$presetName] ?? null;
         if (null === $preset) {
-            throw new UndefinedPresetException(message: sprintf('Undefined preset %s', $presetName));
+            throw new UndefinedPresetException(message: \sprintf('Undefined preset %s', $presetName));
         }
 
+        $options = [];
         foreach ($preset['options'] as $optionName => $optionParams) {
             $option = OptionFactory::fromName($optionName, $optionParams);
             $options[] = $option->resolve();
         }
-        $options = implode('/', $options);
+        $options = \implode('/', $options);
 
         $separator = '@';
         $source = \str_replace(['&', '=', '?', '@'], ['%26', '%3d', '%3f', '%40'], 'plain/'.$src);

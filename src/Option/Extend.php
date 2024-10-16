@@ -19,7 +19,7 @@ class Extend extends Option
     {
         $parts = [$this->params['extend'] ? 'true' : 'false'];
 
-        if (!empty($this->params['gravity'])) {
+        if (\array_key_exists('gravity', $this->params)) {
             $gravity = new Gravity($this->params['gravity']);
             $parts = \array_merge($parts, $gravity->getParts());
         }

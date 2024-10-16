@@ -19,7 +19,7 @@ class Rotate extends Option
     {
         $parts = [];
 
-        if (!empty($this->params['angle'])) {
+        if (\array_key_exists('angle', $this->params)) {
             $parts['angle'] = $this->params['angle'];
         }
 
